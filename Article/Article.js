@@ -142,7 +142,7 @@ function createArticle(title, date, p1, p2, p3){
   articleDate.classList.add('date');
   articleButton.classList.add('expandButton');
 
-  debugger;
+ 
   articleTitle.textContent = title;
   articleDate.textContent = date;
   articleP1.textContent = p1;
