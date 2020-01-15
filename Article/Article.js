@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Coding for Hipsters',
+    date: 'Jan 1st, 2020',
+    firstParagraph: `Sustainable celiac microdosing man braid, jianbing marfa jean shorts schlitz semiotics hoodie food truck. Vice banh mi before they sold out, pop-up gastropub succulents cronut put a bird on it activated charcoal waistcoat palo santo beard skateboard cray. Cred biodiesel scenester, seitan kickstarter bitters raw denim actually subway tile poke everyday carry distillery sriracha ramps. Vexillologist 90's ethical meggings pabst biodiesel slow-carb whatever.`,
+
+    secondParagraph: `Vice brunch kombucha four dollar toast, semiotics keffiyeh thundercats photo booth. Chartreuse gastropub tilde cray cliche, chia marfa raclette literally cloud bread la croix. Vice cred copper mug, vape meditation quinoa +1 affogato banh mi bushwick brooklyn jean shorts cloud bread austin seitan. Vaporware actually dreamcatcher, affogato scenester snackwave retro flannel occupy next level man bun.`,
+
+    thirdParagraph: `Before they sold out seitan green juice 90's. Pork belly af squid brooklyn heirloom, man braid wayfarers. YOLO chartreuse air plant forage, before they sold out tumblr kombucha mumblecore health goth DIY pickled. Chambray bitters authentic hella hoodie yuccie, gochujang af iceland distillery sustainable try-hard. Vexillologist scenester chicharrones yuccie paleo banh mi tote bag tousled. Glossier lo-fi humblebrag gochujang kogi, art party helvetica pop-up. Tote bag kale chips af farm-to-table prism coloring book chicharrones.`
   }
 ];
 
@@ -133,19 +142,24 @@ function createArticle(title, date, p1, p2, p3){
   articleDate.classList.add('date');
   articleButton.classList.add('expandButton');
 
-  button.addEventListener('click', event => {
+  debugger;
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleP1.textContent = p1;
+  articleP2.textContent  = p2;
+  articleP3.textContent = p3;
+
+  articleButton.addEventListener('click', () => {
     articleContainer.classList.toggle('article-open');
 
-    articleTitle.textContent = title;
-    articleDate.textContent = date;
-    articleP1.textContent = p1;
-    articleP2.textContent  = p2;
-    articleP3.textContent = p3;
   })
+  
   return articleContainer;
 }
 const articles = document.querySelector('.articles');
 
-data.forEach(content => {
-  articles.append(createArticle(content.title, content.date, content.p1, content.p2, content.p3))
+data.map(content => {
+  articles.append(createArticle(content.title, content.date, content.firstParagraph, content.secondParagraph, content.thirdParagraph))
 })
+
+
