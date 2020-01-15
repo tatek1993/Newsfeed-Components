@@ -115,20 +115,37 @@ const data = [
 function createArticle(title, date, p1, p2, p3){
 
   const articleContainer = document.createElement('div');
-  const title = document.createElement('h2');
-  const date = document.createElement('p');
-  const p1 = document.createElement('p');
-  const p2 = document.createElement('p');
-  const p2 = document.createElement('p');
-  const button = document.createElement('span');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleP1 = document.createElement('p');
+  const articleP2 = document.createElement('p');
+  const articleP3 = document.createElement('p');
+  const articleButton = document.createElement('span');
 
-  articleContainer.append(title);
-  articleContainer.append(date);
-  articleContainer.append(p1);
-  articleContainer.append(p2);
-  articleContainer.append(p3);
-  articleContainer.append(button);
+  articleContainer.append(articleTitle);
+  articleContainer.append(articleDate);
+  articleContainer.append(articleP1);
+  articleContainer.append(articleP2);
+  articleContainer.append(articleP3);
+  articleContainer.append(articleButton);
 
-  articleContainer.classList.add('article');
-  date.classList.add('date');
+  articleContainer.classList.add('article', 'article-open');
+  articleDate.classList.add('date');
+  articleButton.classList.add('expandButton');
+
+  button.addEventListener('click', event => {
+    articleContainer.classList.toggle('article-open');
+
+    articleTitle.textContent = title;
+    articleDate.textContent = date;
+    articleP1.textContent = p1;
+    articleP2.textContent  = p2;
+    articleP3.textContent = p3;
+  })
+  return articleContainer;
 }
+const articles = document.querySelector('.articles');
+
+data.forEach(content => {
+  articles.append(createArticle(content.title, content.date, content.p1, content.p2, content.p3))
+})
